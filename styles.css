@@ -1,0 +1,820 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5dc;
+    color: #333;
+    padding-top: 63px; /* Ajusta este valor a la altura de tu header + un pequeño margen si lo deseas */
+}
+
+h1, h2, h3 {
+    font-family: 'Merriweather', serif;
+}
+
+.header .logo a:hover {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff;
+}
+
+.navbar a:hover {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff;
+}
+
+.header {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.header {
+    backdrop-filter: blur(10px); /* Aplica desenfoque */
+}
+
+.navbar a {
+    position: relative;
+}
+
+.navbar a:hover::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #00aaff; /* Ajusta al color que prefieras */
+    animation: expandLine 0.3s ease-out;
+}
+
+@keyframes expandLine {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.footer {
+    background: linear-gradient(135deg, #333, #555);
+}
+
+.footer-section h3,
+.footer-section p,
+.footer-section a {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.footer-section.social-icons a:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.copyright {
+    font-family: 'Montserrat', sans-serif;
+    color: #999;
+    font-size: 0.85em;
+    letter-spacing: 0.5px;
+}
+
+
+/* HEADER */
+.header {
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo ligeramente transparente */
+    color: white;
+    padding: 15px 20px; /* Reducimos el padding vertical */
+    position: fixed; /* Para que sea sticky (opcional) */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100; /* Asegura que esté por encima de otros elementos */
+    display: flex;
+    justify-content: space-between; /* Logo a la izquierda, navegación a la derecha */
+    align-items: center; /* Centra verticalmente el logo y la navegación */
+}
+
+.header .logo a {
+    font-family: 'Merriweather', serif;
+    color: white;
+    text-decoration: none;
+    font-size: 1.8em; /* Puedes ajustar el tamaño del logo */
+    font-weight: bold;
+    color: white;
+    margin-right: 20px; /* Añade un poco de espacio entre el logo y el eslogan */
+}
+
+.slogan {
+    font-family: 'Great Vibes', cursive; /* Aplicamos la fuente Great Vibes */
+    font-size: 1.8em; /* Puedes ajustar el tamaño si es necesario */
+    font-style: normal; /* Ya no necesitamos itálica, Great Vibes ya es cursiva */
+    text-align: center; /* Manteniendo la alineación centrada (si la tenías) */
+    color: #fcfbfb; /* Mantenemos el color */
+    margin-top: 10px; /* Añadiendo un poco de espacio superior al título */
+    margin-bottom: 20px; /* Aumentando la separación inferior (ajusta el valor según necesites) */
+}
+
+/* Estilos para la navegación */
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Para alinear los elementos horizontalmente */
+}
+
+.navbar li {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold; /* O semi-bold si lo prefieres */
+    margin-left: 20px; /* Espacio entre los elementos de la navegación */
+}
+
+.navbar li:first-child {
+    margin-left: 0;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+    color: #f0f0f0; /* Un tono ligeramente más claro al hacer hover */
+}
+
+.navbar ul li a {
+    display: flex; /* Para alinear icono y texto */
+    align-items: center; /* Centra verticalmente los elementos */
+    gap: 5px; /* Espacio entre icono y texto (alternativa a margin-right) */
+    text-decoration: none; /* Asegúrate de que no haya subrayado en el enlace */
+    color: inherit; /* Hereda el color del texto */
+}
+
+.navbar ul li a img {
+    width: 1.8em; /* Aumenta el tamaño un poco */
+    height: 1.8em; /* Mantiene la proporción */
+    margin-right: 5px; /* Espacio entre icono y texto */
+    vertical-align: middle; /* Alineación vertical */
+}
+
+.navbar ul li a .sr-only {
+    position: static; /* Para que el lector de pantalla lo lea */
+    width: auto;
+    height: auto;
+    clip: auto;
+    overflow: visible;
+    padding: 0;
+    margin: 0;
+    white-space: normal;
+}
+
+/* Si decides no tener texto junto al icono, puedes ajustar el margen */
+.navbar ul li a:only-child img {
+    margin-right: 0;
+}
+
+
+
+/* Menú hamburguesa */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Estilos para el menú hamburguesa activo (en pantallas pequeñas) */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: row; /* Aseguramos que los elementos del header estén en fila */
+        justify-content: space-between; /* Espacio entre logo/eslogan y menú */
+        align-items: center; /* Centramos verticalmente */
+        padding: 10px 15px; /* Reducimos un poco el padding en móvil */
+    }
+
+    .header .logo {
+        /* Podemos agrupar logo y eslogan en un contenedor para manejarlos juntos */
+        display: flex;
+        flex-direction: column; /* Inicialmente apilamos logo y eslogan */
+        align-items: flex-start; /* Alineamos a la izquierda */
+    }
+
+    .header .logo a {
+        font-size: 1.5em; /* Reducimos el tamaño del logo en móvil */
+        margin-right: 0; /* Removemos el margen derecho del logo en móvil */
+        margin-bottom: 5px; /* Añadimos un pequeño margen inferior entre logo y eslogan */
+    }
+
+    .slogan {
+        font-size: 1em; /* Reducimos el tamaño del eslogan en móvil */
+    }
+
+    .navbar {
+        display: none; /* Ocultamos la navegación principal en móvil */
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        position: absolute;
+        top: 55px; /* Ajusta según la nueva altura del header en móvil */
+        left: 0;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .navbar.active {
+        display: block;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex; /* Para distribuir los ítems horizontalmente */
+        justify-content: space-around; /* Distribuye los ítems con espacio igualitario entre ellos */
+        /* O puedes usar margin si prefieres un espacio fijo */
+        /* gap: 20px; /* Espacio entre los ítems (alternativa a justify-content o margin) */
+    }
+
+    .navbar li {
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: flex;
+        order: 1; /* Colocamos el menú hamburguesa al final (derecha) */
+    }
+}
+
+/* Estilos para el Footer */
+.footer {
+    background-color: #333;
+    color: #f8f8f8;
+    padding: 30px 20px;
+    text-align: center; /* Centramos el copyright por defecto */
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Distribución en columnas flexible */
+    gap: 20px;
+    padding: 20px;
+}
+
+.footer-section {
+    text-align: left;
+}
+
+.footer-section h3 {
+    color: #f8f8f8;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.footer-section p,
+.footer-section li,
+.footer-section a {
+    color: #ddd;
+    font-size: 0.9em;
+    line-height: 1.6;
+    text-decoration: none;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section li {
+    margin-bottom: 5px;
+}
+
+.footer-section a:hover {
+    color: #00aaff;
+}
+
+.footer-section.social-icons {
+    text-align: left;
+}
+
+.footer-section.social-icons a {
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+.copyright {
+    grid-column: 1 / -1; /* Ocupa toda la fila */
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.8em;
+    color: #aaa;
+}
+
+/* Estilos específicos para la información de contacto */
+.footer-section.contact-info i {
+    margin-right: 5px;
+    color: #00aaff;
+}
+
+
+/* Fondo y sección principal */
+.hero {
+    min-height: 100vh;
+    background-image: url('Fondo/MODERNA_DESKTOP.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    z-index: 10;
+}
+
+
+
+/* Estilos para el botón de llamada a la acción en la sección principal */
+.cta-button {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold; /* O semi-bold si lo prefieres */
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out; /* Transición para color y escala */
+}
+
+.cta-button:hover {
+    background-color: #0056b3; /* Un tono más oscuro al hacer hover */
+    transform: scale(1.05); /* Ligeramente más grande al hacer hover */
+}
+/* MEDIA QUERIES para responsividad */
+
+@media (max-width: 768px) {
+    .hero {
+        background-image: url('Fondo/MODERNA_MOBILE.png');
+        background-position: center top;
+        background-attachment: scroll;
+        padding: 60px 20px;
+    }
+
+    .content h1 {
+        font-size: 2.5rem;
+    }
+
+    .cta-button {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold; /* O semi-bold si lo prefieres */
+        padding: 12px 24px;
+        font-size: 1.1
+    }
+}
+
+
+
+/* Estilos para la página de servicios */
+
+.servicios-page {
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 0.2%;
+  padding-bottom: 0.2%;
+}
+
+
+.servicios-page .container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    box-shadow: 2px 2px 10px rgba(5, 5, 5, 0.514);
+
+}
+
+.servicios-page h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.servicios-page .parrafo {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #666;
+}
+
+.servicios-page .parrafo p {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+.servicio-card {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 15px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    text-align: justify;
+}
+
+.servicio-card h3 {
+    text-align: center;
+    font-family: 'Great Vibes', cursive;
+    font-weight: 700; /* Puedes ajustar el grosor si lo deseas */
+    font-size: 2.0rem;
+}
+
+.servicio-imagen {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.servicio-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.servicio-detalles {
+    flex-grow: 1;
+}
+
+.servicio-detalles h3 {
+    margin-top: 0;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.servicio-detalles p {
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.servicio-detalles .precio {
+    font-weight: bold;
+    color: #007bff;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.servicio-detalles .cta-servicio {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+    text-align: left;
+    align-items: left;
+}
+
+.servicio-detalles .cta-servicio:hover {
+    background-color: #0056b3;
+}
+
+.servicio-detalles p strong {
+    font-size: 0.8em; /* Más pequeño */
+    text-align: center; /* Centrado */
+    display: block; /* Para que text-align: center funcione correctamente en un elemento en línea como <strong> */
+    color: #007bff; /* Color azul llamativo (puedes cambiarlo) */
+    margin-top: 5px; /* Espacio superior */
+    font-weight: normal; /* Para que no sea tan "negrita" y el color destaque más */
+}
+
+/* Ajustes para pantallas más pequeñas (responsividad) */
+@media (max-width: 768px) {
+    .servicios-page h1 {
+        margin-bottom: 15px;
+        font-size: 2em;
+    }
+
+    .servicios-page .parrafo p {
+        padding: 0;
+        font-size: 0.95em;
+    }
+
+    .servicio-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .servicio-imagen {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 10px;
+    }
+
+    .servicio-detalles {
+        width: 100%;
+    }
+
+    .servicio-detalles .precio {
+        align-self: flex-start;
+        margin-bottom: 5px;
+    }
+}
+
+
+/* Ajustes para pantallas más pequeñas (responsividad) */
+@media (max-width: 768px) {
+    .servicios-page h1 {
+        margin-bottom: 15px; /* Reducimos el margen inferior del título en móvil */
+        font-size: 2em; /* Puedes ajustar el tamaño del título en móvil si es necesario */
+    }
+
+    .servicios-page .parrafo p {
+        padding: 0; /* Removemos el padding horizontal en móvil para que ocupe todo el ancho */
+        font-size: 0.95em; /* Puedes ajustar el tamaño del texto del párrafo en móvil */
+    }
+
+    .servicio-card {
+        flex-direction: column; /* Apilamos imagen y detalles en móvil */
+        align-items: flex-start; /* Alineamos los elementos a la izquierda en móvil */
+    }
+
+    .servicio-imagen {
+        width: 80px; /* Reducimos el tamaño de la imagen en móvil */
+        height: 80px;
+        margin-bottom: 10px; /* Añadimos un margen debajo de la imagen en móvil */
+    }
+
+    .servicio-detalles {
+        width: 100%; /* Los detalles ocupan todo el ancho en móvil */
+    }
+
+    .servicio-detalles .precio {
+        align-self: flex-start; /* Alineamos el precio a la izquierda en móvil */
+        margin-bottom: 5px;
+    }
+}
+
+
+/* Estilos para la página de reservas */
+.reservas-page {
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.reservas-page .container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 10px rgba(5, 5, 5, 0.89);
+}
+
+.reservas-page h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.9rem;
+}
+
+.reservas-page p {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #666;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="date"],
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+
+/* Botón enviar datos del formulario de reserva */
+.submit-button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out; /* Transición para color y escala */
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.02); /* Ligeramente más grande al hacer hover */
+}
+
+
+/* Estilos para la página de contacto simplificada */
+
+@media (min-width: 768px) {
+  #contacto-page { /* Asegúrate de que este sea el selector correcto de tu página de contacto */
+    background-color: #f5f5dc; /* Gris muy claro */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* O 'scroll' si prefieres que el fondo se desplace con el contenido */
+    padding-top: 2%;
+    padding-bottom: 2%;
+  }
+}
+
+@media (max-width: 767px) {
+  #contacto-page {
+    background-color: #ffffff; /* Fondo blanco sólido para móvil (puedes ajustarlo) */
+  }
+}
+
+.contacto-page .container {
+    max-width: 700px; /* Reducimos el ancho máximo para centrar mejor el formulario */
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Centramos el contenido principal */
+    box-shadow: 2px 2px 10px rgba(5, 5, 5, 0.89);
+}
+
+.contacto-page h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem; /* Un poco más grande */
+}
+
+.contacto-page p {
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.contacto-form-wrapper {
+    margin-top: 20px;
+}
+
+.contacto-form-wrapper h2 {
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+}
+
+.contacto-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Estira los elementos del formulario para ocupar el ancho */
+}
+
+.contacto-form .form-group {
+    margin-bottom: 20px;
+    text-align: left; /* Alineamos las etiquetas a la izquierda dentro de cada grupo */
+}
+
+.contacto-form .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.contacto-form .form-group input[type="text"],
+.contacto-form .form-group input[type="email"],
+.contacto-form .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.contacto-form .form-group textarea {
+    min-height: 150px; /* Un poco más alto para el mensaje */
+}
+
+.contacto-form .cta-button {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold; /* O semi-bold si lo prefieres */
+    display: inline-block; /* O block si prefieres que ocupe todo el ancho */
+    background-color: #007bff; /* Color azul principal */
+    color: white;
+    padding: 15px 30px; /* Ajusta el padding si lo deseas */
+    text-decoration: none;
+    border-radius: 5px; /* Borde redondeado */
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out; /* Transición para hover */
+    cursor: pointer; /* Indica que es un botón */
+    border: none; /* Elimina cualquier borde */
+    font-size: 1rem; /* Ajusta el tamaño de la fuente si es necesario */
+    align-self: center; /* Centra el botón */
+    margin-top: 20px;
+    width: fit-content; /* Ajusta el ancho al contenido */
+}
+
+.contacto-form .cta-button:hover {
+    background-color: #0056b3; /* Color más oscuro al hacer hover */
+    transform: scale(1.05); /* Ligeramente más grande al hacer hover */
+}
+
+/* Estilos para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .contacto-page .container {
+        padding: 20px;
+    }
+
+    .contacto-page h1 {
+        font-size: 2.2rem;
+    }
+
+    .contacto-form-wrapper h2 {
+        font-size: 1.6rem;
+    }
+}
+
+/* Estilos para el reproductor de música (solo escritorio) */
+.music-player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f8f8f8; /* Un fondo claro */
+    padding: 10px;
+    text-align: center;
+    z-index: 100; /* Asegura que esté por encima de otros elementos */
+}
+
+/* Ocultar en dispositivos móviles (ancho máximo de 768px es un estándar común para móviles) */
+@media (max-width: 768px) {
+    .music-player {
+        display: none;
+    }
+}

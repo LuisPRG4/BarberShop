@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="description" content="Contacta con YenfryBarber en Porlamar. Encuentra nuestra dirección, número de teléfono y formulario de contacto para cualquier consulta o cita.">
+    <link rel="icon" href="Fav/favIcon.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - YenfryBarber</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">YenfryBarber</a>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html"><img src="Recursos/Iconos/Inicio.png" alt="Inicio">Inicio</a></li>
+                <li><a href="servicios.html"><img src="Recursos/Iconos/Servicio.png" alt="Servicio">Servicio</a></li>
+                <li><a href="reservas.html"><img src="Recursos/Iconos/Reserva.png" alt="Reserva">Reserva</a></li>
+                <li><a href="contacto.html"><img src="Recursos/Iconos/Contacto.png" alt="Contacto">Contacto</a></li>
+                <li><a href="galeria.html"><img src="Recursos/Iconos/Galeria.png" alt="Galería">Galería</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+    <section id="contacto-page" class="contacto-page">
+        <div class="container">
+            <h1>Contáctanos</h1>
+            <p>¿Tienes alguna pregunta o comentario? ¡No dudes en escribirnos!</p>
+
+            <div class="contacto-form-wrapper">
+                <h2>Envíanos un Mensaje</h2>
+
+                <form action="mailto:info@yenfrybarber.com?subject=Mensaje desde el sitio web" method="post" enctype="text/plain" class="contacto-form">
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="asunto">Asunto:</label>
+                        <input type="text" id="asunto" name="asunto">
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje:</label>
+                        <textarea id="mensaje" name="mensaje" rows="7" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about-us">
+                <h3>YenfryBarber</h3>
+                <p>Tu destino para un estilo impecable en la Isla de Margarita.</p>
+            </div>
+            <div class="footer-section navigation">
+                <h3>Navegación</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="reservas.html">Reserva</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact-info">
+                <h3>Contacto y Ubicación</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Autopista El Valle, El Valle del Espíritu Santo, Porlamar. A la derecha de Ifood.</p>
+                <p><i class="fas fa-phone"></i> Tel: <a href="tel:0412-913-2525">412-9132525</a></p>
+                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:info@yenfrybarber.com">info@yenfrybarber.com</a></p>
+            </div>
+            <div class="footer-section social-icons">
+                <h3>Síguenos</h3>
+                <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="#" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 YenfryBarber. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const navbar = document.querySelector('.navbar');
+
+        menuToggle.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+        });
+    </script>
+
+    <script>
+        const sectionsToObserve = document.querySelectorAll('#servicios, #reservas, #contacto');
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Dejar de observar una vez que es visible
+                }
+            });
+        }, {
+            threshold: 0.15 // Cambia este valor para ajustar cuándo se considera visible (0.0 a 1.0)
+        });
+
+        sectionsToObserve.forEach(section => {
+            section.classList.add('hidden'); // Ocultar inicialmente
+            observer.observe(section); // Empezar a observar
+        });
+    </script>
+
+    <script>
+        const formularioContacto = document.querySelector('.contacto-page form');
+        const nombreInputContacto = document.getElementById('nombre');
+        const emailInputContacto = document.getElementById('email');
+        const asuntoInputContacto = document.getElementById('asunto');
+        const mensajeInputContacto = document.getElementById('mensaje');
+
+        nombreInputContacto.addEventListener('input', () => {
+            nombreInputContacto.value = nombreInputContacto.value.replace(/[^a-zA-Z\s]/g, '');
+        });
+
+        // Eliminamos el listener del 'submit' del formulario
+        // formularioContacto.addEventListener('submit', enviarContacto);
+
+        function enviarContacto() {
+            // Obtener los valores de los campos del formulario de contacto
+            const nombreContacto = nombreInputContacto.value.trim();
+            const emailContacto = emailInputContacto.value.trim();
+            const asuntoContacto = asuntoInputContacto.value.trim();
+            const mensajeContacto = mensajeInputContacto.value.trim();
+            const correoDestinoContacto = 'info@yenfrybarber.com'; // ¡TU CORREO!
+            const asuntoCorreo = `Mensaje desde el sitio web: ${asuntoContacto || 'Sin asunto'}`;
+            const cuerpoCorreo = `Nombre: ${nombreContacto}\nEmail: ${emailContacto}\nAsunto: ${asuntoContacto}\nMensaje:\n${mensajeContacto}`;
+
+            // Verificar si los campos obligatorios están llenos
+            if (nombreContacto === '' || emailContacto === '' || mensajeContacto === '') {
+                alert('Por favor, completa todos los campos obligatorios (Nombre, Email y Mensaje).');
+                return; // Detener la ejecución si faltan campos
+            }
+
+            // Detectar si el usuario está en un dispositivo móvil (una detección simple)
+            const esMovil = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+            if (esMovil) {
+                // Usar mailto para dispositivos móviles
+                const mailtoUrlContacto = `mailto:${encodeURIComponent(correoDestinoContacto)}?subject=${encodeURIComponent(asuntoCorreo)}&body=${encodeURIComponent(cuerpoCorreo)}`;
+                window.location.href = mailtoUrlContacto;
+                alert('Se abrirá tu aplicación de correo para enviar el mensaje.');
+            } else {
+                // Usar la URL de Gmail para escritorio
+                const gmailUrlContacto = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(correoDestinoContacto)}&su=${encodeURIComponent(asuntoCorreo)}&body=${encodeURIComponent(cuerpoCorreo)}&tf=1`;
+                window.open(gmailUrlContacto, '_blank');
+                alert('Tu mensaje se abrirá en una nueva pestaña de tu navegador.');
+            }
+
+            // Reiniciar el formulario de contacto
+            formularioContacto.reset();
+        }
+
+        // Reemplazamos el listener del 'submit' con nuestro botón personalizado
+        const botonEnviarContacto = document.querySelector('.contacto-page form .cta-button');
+        botonEnviarContacto.addEventListener('click', enviarContacto);
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function mostrarErroresContacto(mensajesDeError) {
+            const contenedorErrores = document.createElement('div');
+            contenedorErrores.classList.add('errores-formulario');
+            contenedorErrores.innerHTML = '<h3>Por favor, corrige los siguientes errores:</h3><ul></ul>';
+
+            const listaErrores = contenedorErrores.querySelector('ul');
+            mensajesDeError.forEach(error => {
+                const itemError = document.createElement('li');
+                itemError.textContent = error;
+                listaErrores.appendChild(itemError);
+            });
+
+            formularioContacto.parentNode.insertBefore(contenedorErrores, formularioContacto);
+
+            setTimeout(() => {
+                if (contenedorErrores.parentNode) {
+                    contenedorErrores.remove();
+                }
+            }, 5000);
+        }
+    </script>
+
+    <div class="music-player">
+        <audio id="myAudio" controls loop>
+            <source src="tu-cancion.mp3" type="audio/mpeg">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+    </div>
+</body>
+</html>

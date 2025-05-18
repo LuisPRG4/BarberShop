@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="description" content="Reserva tu cita en YenfryBarber en Porlamar. Elige tu servicio y horario preferido de manera fácil y rápida. ¡Te esperamos!">
+    <link rel="icon" href="Fav/favIcon.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas - YenfryBarber</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">YenfryBarber</a>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html"><img src="Recursos/Iconos/Inicio.png" alt="Inicio">Inicio</a></li>
+                <li><a href="servicios.html"><img src="Recursos/Iconos/Servicio.png" alt="Servicio">Servicio</a></li>
+                <li><a href="reservas.html"><img src="Recursos/Iconos/Reserva.png" alt="Reserva">Reserva</a></li>
+                <li><a href="contacto.html"><img src="Recursos/Iconos/Contacto.png" alt="Contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+    <section id="reservas" class="reservas-page">
+        <div class="container">
+            <h1>Haz tu Reserva</h1>
+            <p>Por favor, completa el siguiente formulario para reservar tu cita en YenfryBarber.</p>
+            <form id="formulario-reservas">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono">
+                </div>
+                <div class="form-group">
+                    <label for="servicio">Servicio:</label>
+                    <select id="servicio" name="servicio">
+                        <option value="corte_clasico">Corte Clásico</option>
+                        <option value="corte_degradado">Degradado Contundente</option>
+                        <option value="barba_perfilada">Barba Perfilada y Estilizada</option>
+                        <option value="perfilado_cejas">Perfilado de Cejas</option>
+                        <option value="corte_infantil">Corte Infantil</option>
+                        <option value="corte_diseno">Corte con Diseño</option>
+                        <option value="alisado_peinado">Estilizado Liso Temporal</option>
+                        <option value="corte_ras">Corte al Ras</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="modalidad">Modalidad:</label>
+                    <select id="modalidad" name="modalidad" onchange="actualizarPrecioEstimado()">
+                        <option value="barberia">En Barbería</option>
+                        <option value="domicilio">A Domicilio</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" name="fecha" required>
+                </div>
+                <div class="form-group">
+                    <label for="hora">Hora:</label>
+                    <select id="hora" name="hora">
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="16:00">04:00 PM</option>
+                        <option value="17:00">05:00 PM</option>
+                        <option value="18:00">06:00 PM</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="comentarios">Comentarios Adicionales:</label>
+                    <textarea id="comentarios" name="comentarios" rows="3"></textarea>
+                </div>
+                <button type="button" class="submit-button" onclick="enviarReserva()">Reservar Cita</button>
+                <button type="button" id="boton-previsualizacion" style="display:none;" onclick="mostrarPrevisualizacion()">Ver Última Reserva</button>
+            </form>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about-us">
+                <h3>YenfryBarber</h3>
+                <p>Tu destino para un estilo impecable en la Isla de Margarita.</p>
+            </div>
+            <div class="footer-section navigation">
+                <h3>Navegación</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="reservas.html">Reserva</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact-info">
+                <h3>Contacto y Ubicación</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Autopista El Valle, El Valle del Espíritu Santo, Porlamar. A la derecha de Ifood.</p>
+                <p><i class="fas fa-phone"></i> Tel: <a href="tel:0412-913-2525">412-9132525</a></p>
+                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:info@yenfrybarber.com">info@yenfrybarber.com</a></p>
+            </div>
+            <div class="footer-section social-icons">
+                <h3>Síguenos</h3>
+                <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="#" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 YenfryBarber. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Obtener el elemento del botón de menú (para dispositivos móviles)
+        const menuToggle = document.getElementById('menu-toggle');
+        // Obtener la barra de navegación principal
+        const navbar = document.querySelector('.navbar');
+
+        // Añadir un event listener al botón de menú
+        menuToggle.addEventListener('click', () => {
+            // Al hacer clic, se togglea (añade o elimina) la clase 'active' en la barra de navegación
+            // Esto se utiliza para mostrar u ocultar el menú en dispositivos móviles (controlado por CSS)
+            navbar.classList.toggle('active');
+        });
+    </script>
+    <script>
+        // Seleccionar todas las secciones que se van a observar para la animación (aunque 'reservas' es la única visible aquí)
+        const sectionsToObserve = document.querySelectorAll('#servicios, #reservas, #contacto');
+
+        // Crear un nuevo Intersection Observer
+        const observer = new IntersectionObserver((entries, observer) => {
+            // Iterar sobre cada entrada (cada sección observada)
+            entries.forEach(entry => {
+                // Si la sección está intersectando con la ventana (es visible)
+                if (entry.isIntersecting) {
+                    // Añadir la clase 'visible' a la sección para activar la animación (controlado por CSS)
+                    entry.target.classList.add('visible');
+                    // Dejar de observar esta sección una vez que se ha hecho visible
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            // Configuración del Intersection Observer
+            threshold: 0.15 // Un 15% de la sección debe ser visible para que se considere 'intersecting'
+        });
+
+        // Para cada sección a observar
+        sectionsToObserve.forEach(section => {
+            // Añadir la clase 'hidden' inicialmente (aunque para la página de reservas esto podría no ser necesario si no hay animación inicial)
+            section.classList.add('hidden');
+            // Empezar a observar la sección
+            observer.observe(section);
+        });
+    </script>
+    <script>
+        // Obtener el formulario de reservas
+        const formularioReservas = document.querySelector('.reservas-page form');
+        // Obtener los campos de entrada relevantes
+        const nombreInput = document.getElementById('nombre');
+        const emailInput = document.getElementById('email');
+        const fechaInput = document.getElementById('fecha');
+        const telefonoInput = document.getElementById('telefono');
+
+        // Event listener para el campo de teléfono para permitir solo números
+        telefonoInput.addEventListener('input', () => {
+            // Eliminar cualquier carácter que no sea un dígito
+            telefonoInput.value = telefonoInput.value.replace(/[^0-9]/g, '');
+        });
+
+        // Event listener para el campo de nombre para permitir solo letras y espacios
+        nombreInput.addEventListener('input', () => {
+            // Eliminar cualquier carácter que no sea una letra (mayúscula o minúscula) o un espacio
+            nombreInput.value = nombreInput.value.replace(/[^a-zA-Z\s]/g, '');
+        });
+
+        // Función para enviar la reserva (se llama al hacer clic en el botón "Reservar Cita")
+        function enviarReserva() {
+            // Obtener los valores de los campos del formulario y eliminar espacios en blanco al inicio y al final
+            const nombre = document.getElementById('nombre').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const telefono = document.getElementById('telefono').value.trim();
+            const servicio = document.getElementById('servicio').value;
+            const fecha = document.getElementById('fecha').value.trim();
+            const hora = document.getElementById('hora').value;
+            const comentarios = document.getElementById('comentarios').value.trim();
+            const correoDestino = 'juangmz940@gmail.com'; // ¡TU CORREO ELECTRÓNICO PARA RECIBIR LAS RESERVAS!
+            const asunto = 'Nueva Reserva de YenfryBarber';
+            const cuerpo = `Nombre: ${nombre}\nEmail: ${email}\nTeléfono: ${telefono}\nServicio: ${servicio}\nFecha: ${fecha}\nHora: ${hora}\nComentarios: ${comentarios}`;
+
+            // Verificar si los campos obligatorios están llenos
+            if (nombre === '' || email === '' || fecha === '' || telefono === '' || comentarios === '') {
+                alert('Por favor, completa todos los campos del formulario.');
+                return; // Detener la ejecución si algún campo obligatorio está vacío
+            }
+
+            // Detectar si el usuario está en un dispositivo móvil (una detección simple basada en el user agent)
+            const esMovil = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+            if (esMovil) {
+                // Si es un dispositivo móvil, construir una URL 'mailto:' para abrir la aplicación de correo
+                const mailtoUrl = `mailto:${correoDestino}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
+                window.location.href = mailtoUrl; // Abrir la URL 'mailto:' en la misma ventana
+                alert('Se abrirá tu aplicación de correo para enviar la reserva.');
+            } else {
+                // Si no es un dispositivo móvil (escritorio), construir una URL para abrir Gmail en una nueva pestaña
+                const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(correoDestino)}&su=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}&tf=1`;
+                window.open(gmailUrl, '_blank'); // Abrir la URL de Gmail en una nueva pestaña
+                alert('Tu solicitud de reserva se abrirá en una nueva pestaña de tu navegador.');
+            }
+
+            // Reiniciar el formulario después de intentar enviar la reserva
+            document.getElementById('formulario-reservas').reset();
+
+            // Ocultar el botón de previsualización (asumo que se muestra después de una reserva, pero se oculta al enviar una nueva)
+            document.getElementById('boton-previsualizacion').style.display = 'none';
+        }
+
+        // Función para mostrar la última reserva (parece estar usando localStorage, pero no veo dónde se guarda la reserva)
+        function mostrarPrevisualizacion() {
+            const reservaGuardada = localStorage.getItem('ultimaReserva');
+            if (reservaGuardada) {
+                const reserva = JSON.parse(reservaGuardada);
+                const mensaje = `Última reserva enviada:\nNombre: ${reserva.nombre}\nEmail: ${reserva.email}\nTeléfono: ${reserva.telefono}\nServicio: ${reserva.servicio}\nFecha: ${reserva.fecha}\nHora: ${reserva.hora}\nComentarios: ${reserva.comentarios}`;
+                alert(mensaje);
+            } else {
+                alert('No se encontró ninguna reserva reciente.');
+            }
+        }
+
+        
+        // Obtener los elementos select del servicio y la modalidad
+        const servicioSelect = document.getElementById('servicio');
+        const modalidadSelect = document.getElementById('modalidad');
+
+        // Función que se llamará al cambiar la selección de servicio o modalidad
+        function actualizarPrecioEstimado() {
+            const servicioSeleccionado = servicioSelect.value;
+            const modalidadSeleccionada = modalidadSelect.value;
+            let precioEstimado = 'Consultar precio'; // Precio por defecto
+
+            // Aquí definimos los precios para cada servicio y modalidad
+            const precios = {
+                corte_clasico: { barberia: 15.00, domicilio: 25.00 },
+                corte_degradado: { barberia: 20.00, domicilio: 30.00 },
+                barba_perfilada: { barberia: 10.00, domicilio: 18.00 },
+                perfilado_cejas: { barberia: 8.00, domicilio: 15.00 },
+                corte_infantil: { barberia: 12.00, domicilio: 20.00 },
+                corte_diseno: { barberia: 25.00, domicilio: 35.00 },
+                alisado_peinado: { barberia: 18.00, domicilio: 28.00 },
+                corte_ras: { barberia: 10.00, domicilio: 18.00 }
+            };
+
+            // Verificamos si el servicio seleccionado existe en nuestro objeto de precios
+            if (precios[servicioSeleccionado] && precios[servicioSeleccionado][modalidadSeleccionada]) {
+                precioEstimado = `$${precios[servicioSeleccionado][modalidadSeleccionada].toFixed(2)}`;
+            }
+
+            // Mostramos una alerta con el precio estimado
+            alert(`Precio estimado para ${obtenerNombreServicio(servicioSeleccionado)} (${obtenerNombreModalidad(modalidadSeleccionada)}): ${precioEstimado}`);
+        }
+
+        // Función auxiliar para obtener el nombre legible del servicio
+        function obtenerNombreServicio(valorServicio) {
+            switch (valorServicio) {
+                case 'corte_clasico': return 'Corte Clásico';
+                case 'corte_degradado': return 'Degradado Contundente';
+                case 'barba_perfilada': return 'Barba Perfilada y Estilizada';
+                case 'perfilado_cejas': return 'Perfilado de Cejas';
+                case 'corte_infantil': return 'Corte Infantil';
+                case 'corte_diseno': return 'Corte con Diseño Personalizado';
+                case 'alisado_peinado': return 'Estilizado Liso Temporal';
+                case 'corte_ras': return 'Corte al Ras';
+                default: return 'Servicio no reconocido';
+            }
+        }
+
+        // Función auxiliar para obtener el nombre legible de la modalidad
+        function obtenerNombreModalidad(valorModalidad) {
+            switch (valorModalidad) {
+                case 'barberia': return 'En Barbería';
+                case 'domicilio': return 'A Domicilio';
+                default: return 'Modalidad no reconocida';
+            }
+        }
+    </script>
+
+</script>
+    <div class="music-player">
+        <audio id="myAudio" controls loop>
+            <source src="tu-cancion.mp3" type="audio/mpeg">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+    </div>
+</body>
+</html>
