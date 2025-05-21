@@ -169,7 +169,6 @@ h1, h2, h3 {
     white-space: normal;
 }
 
-/* Si decides no tener texto junto al icono, puedes ajustar el margen */
 .navbar ul li a:only-child img {
     margin-right: 0;
 }
@@ -339,6 +338,7 @@ h1, h2, h3 {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
